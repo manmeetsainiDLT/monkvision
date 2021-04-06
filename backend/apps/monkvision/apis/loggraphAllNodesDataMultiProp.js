@@ -76,7 +76,7 @@ exports.doService = async jsonReq => {
             x,
             ys: yArrays,
             infos: infoArrays,
-            legend: legendArray
+            legends: legendArray
         }
     };
     if (jsonReq.title) result.contents.title = jsonReq.title;

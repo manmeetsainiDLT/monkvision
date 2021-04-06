@@ -29,8 +29,8 @@ const _init = async _ => {
  * @param gridColor The grid color
  * @param singleAxis Use single Y axis?
  */
-async function drawBargraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, annotation, legend) {
-    return await _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, "bar", 0, 1, annotation, legend);
+async function drawBargraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, annotation, legend, animation) {
+    return await _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, "bar", 0, 1, annotation, legend, animation);
 }
 
 /**
@@ -54,11 +54,11 @@ async function drawBargraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAt
  * @param annotation Draw threshold line
  * @param legend     Show/Hide legend property
  */
-async function drawLinegraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, annotation, legend) {
-    return await _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, "line", 0.5, 2, annotation, legend);
+async function drawLinegraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, annotation, legend, animation) {
+    return await _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, "line", 0.8, 1, annotation, legend, animation);
 }
 
-async function _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, type, pointWidth, lineWidth, annotation, legend) {
+async function _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZero, yAtZeros, ysteps, ylabels, ymaxs, bgColors, brColors, labelColor, gridColor, singleAxis, type, pointWidth, lineWidth, annotation, legend, animation) {
     await _init(); const ctx = canvas.getContext("2d"); 
 
     const datasets = []; for (const [i,ys] of contents.ys.entries()) datasets.push({ data: ys, ...contents.legends && { label: contents.legends[i] },     /* Add label property if legends present in contents */
@@ -81,7 +81,8 @@ async function _drawLineOrBarGraph(canvas, contents, maxXTicks, gridLines, xAtZe
         scales: { xAxes: [{ gridLines: {drawOnChartArea: gridLines, drawTicks: false, color: gridColor}, 
                 ticks: {padding:5, beginAtZero: xAtZero?xAtZero.toLowerCase() == "true":false, autoSkip: true,
                 maxTicksLimit: maxXTicks, maxRotation: 0, fontColor: labelColor} }], yAxes },
-        annotation: annotation
+        annotation: annotation,
+        hover: { animationDuration: 0 }
     }
 
     return new Chart(ctx, {type, data, options});
