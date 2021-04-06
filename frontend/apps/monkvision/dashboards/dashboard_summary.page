@@ -16,7 +16,7 @@ SCHEMA
         "api": "statusbanner_activeNodes",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
         "type": "metrictext",
-        "params": "id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_memsql_portcheck_dashboard_sh__ktymsqlitcrv_&percent_total_nodes_Colors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&percent_total_nodes_Explanation=All nodes ONLINE&elseExplanation=One or more nodes OFFLINE&elseTitle=Total Nodes Online"
+        "params": "id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_memsql_portcheck_dashboard_sh__ktymsqlitcrv_&percent_total_nodes_Colors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&percent_total_nodes_Explanation=All nodes ONLINE&elseExplanation=One or more nodes OFFLINE&elseTitle=Total Nodes Online"
     },
     "max_cpu_node": {
         "html": "chart-box",
@@ -25,7 +25,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_node",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
         "type": "metrictext",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_cpu_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much CPU&elseTitle=NODE USING MAX CPU IN CLUSTER"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_cpu_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much CPU&elseTitle=NODE USING MAX CPU IN CLUSTER"
     },
     "max_disk_node": {
         "html": "chart-box",
@@ -34,7 +34,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_node",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
         "type": "metrictext",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much Disk space&elseTitle=NODE USING MAX SPACE IN CLUSTER"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much Disk space&elseTitle=NODE USING MAX SPACE IN CLUSTER"
     },
     "max_ram_node": {
         "html": "chart-box",
@@ -43,7 +43,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_node",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much RAM&elseTitle=NODE USING MAX RAM IN CLUSTER"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much RAM&elseTitle=NODE USING MAX RAM IN CLUSTER"
     },
     "max_node_rx": {
         "html": "chart-box",
@@ -52,7 +52,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_multiprop_node",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_rx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-RX Rate&add_symbol=Kb/s&toKBits=true"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_rx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-RX Rate&add_symbol=Kb/s&toKBits=true"
     },
     "max_node_tx": {
         "html": "chart-box",
@@ -61,7 +61,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_multiprop_node",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_tx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=tx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-TX Rate&add_symbol=Kb/s&toKBits=true"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_tx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=tx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-TX Rate&add_symbol=Kb/s&toKBits=true"
     },
     "max_node_wps": {
         "html": "chart-box",
@@ -70,7 +70,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_multiprop_node",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_wps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=wr_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Writes/sec IN CLUSTER&add_symbol=wr/s&toKBits=false"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_wps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=wr_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Writes/sec IN CLUSTER&add_symbol=wr/s&toKBits=false"
     },
     "max_node_rps": {
         "html": "chart-box",
@@ -79,7 +79,7 @@ SCHEMA
         "api": "statusbannerquery_max_data_multiprop_node",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_rps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rd_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Reads/sec IN CLUSTER&add_symbol=rd/s&toKBits=false"
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_rps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rd_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Reads/sec IN CLUSTER&add_symbol=rd/s&toKBits=false"
     },
     "db_count_node": {
         "html": "chart-box",
@@ -88,7 +88,7 @@ SCHEMA
         "api": "statusbannerquery_dbCount",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
         "type": "metrictext",
-        "params": "threshold={{i18n.dbcount_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseTitle=Number of databases in cluster - Threshold at {{i18n.dbcount_thresh}}.&add_symbol=DBs"
+        "params": "threshold={{i18n.dbcount_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseTitle=Number of databases in cluster - Threshold at {{i18n.dbcount_thresh}}.&add_symbol=DBs"
     },
     "cluster_health": {
         "html": "chart-box",
@@ -97,7 +97,7 @@ SCHEMA
         "api": "statusbannerquery_clusterHealth",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 5vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
-        "params": "max_threshold={{i18n.max_cpu_node_thresh}},{{i18n.max_disk_node_thresh}},{{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc_Health&$qp_logID_1=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&$qp_logID_2=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&$qp_logID_3=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#0063002a&elseTitle=CLUSTER HEALTH - HIGHER IS BETTER"
+        "params": "max_threshold={{i18n.max_cpu_node_thresh}},{{i18n.max_disk_node_thresh}},{{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc_Health&$qp_logID_1=shell_mon__bin_bash_c__home_memsql_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&$qp_logID_2=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&$qp_logID_3=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#0063002a&elseTitle=CLUSTER HEALTH - HIGHER IS BETTER"
     },
     "table": {
         "html":"chart-box", 
@@ -105,7 +105,7 @@ SCHEMA
         "api":"sqlPerfTable", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0}},ys1:{{i18n.ys1}},ys2:{{i18n.ys2}},ys3:{{i18n.ys3}},ys4:{{i18n.ys4}},ys5:{{i18n.ys5}},ys6:{{i18n.ys6}},ys7:{{i18n.ys7}}", 
-        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_query_performance_checker_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.sql_table}}", 
+        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_query_performance_checker_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.sql_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important;color: rgb(250,250,250);} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:last-child{max-width:500px;} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "long_running_table": {
@@ -114,7 +114,7 @@ SCHEMA
         "api":"sqlPerfTable_long_running", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_long_run}},ys1:{{i18n.ys1_long_run}},ys2:{{i18n.ys2_long_run}},ys3:{{i18n.ys3_long_run}},ys4:{{i18n.ys4_long_run}},ys5:{{i18n.ys5_long_run}},ys6:{{i18n.ys6_long_run}},ys7:{{i18n.ys7_long_run}}", 
-        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_long_running_query_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.long_running_table}}", 
+        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_long_running_query_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.long_running_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:last-child{max-width:500px;} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "skew_table": {
@@ -123,7 +123,7 @@ SCHEMA
         "api":"sqlPerfTable_skew", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_skew}},ys1:{{i18n.ys1_skew}},ys2:{{i18n.ys2_skew}},ys3:{{i18n.ys3_skew}}", 
-        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_row_mem_skew_check_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.skew_table}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_row_mem_skew_check_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.skew_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr:nth-child(odd) {background: #f7f7f721} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "dbs_table": {
@@ -132,7 +132,7 @@ SCHEMA
         "api":"sqlPerfTable_DBs", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_dbCount}},ys1:{{i18n.ys1_dbCount}},ys2:{{i18n.ys2_dbCount}},ys3:{{i18n.ys3_dbCount}},ys4:{{i18n.ys4_dbCount}},ys5:{{i18n.ys5_dbCount}}", 
-        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.dbCount_table}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.dbCount_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #00727d; color: rgb(250,250,250);} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "nodeIDs_table": {
@@ -141,7 +141,7 @@ SCHEMA
         "api":"sqlPerfTable_nodes", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_nodes}},ys1:{{i18n.ys1_nodes}}", 
-        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_nodes_list_generator_dashboard_sh__ktymsqlitcrv_&title={{i18n.nodes_table}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_nodes_list_generator_dashboard_sh__ktymsqlitcrv_&title={{i18n.nodes_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #000356; color: rgb(250,250,250);} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "var_table": {
@@ -150,7 +150,7 @@ SCHEMA
         "api":"sqlPerfTable_vars", 
         "type":"table", 
         "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_vars}},ys1:{{i18n.ys1_vars}}", 
-        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_show_vars_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.vars_table}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_show_vars_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.vars_table}}", 
         "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important;} table, td, th{font-size:small;text-align:left} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:nth-child(1) {max-width:1vw; word-wrap: break-word;} tr td:nth-child(2) {max-width:10vw; word-wrap: break-word;} tr td:nth-child(3) {max-width:15vw; word-wrap: break-word;} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
     },
     "success_rate": {
@@ -190,7 +190,7 @@ SCHEMA
         "labelColor": "rgba(120,120,120)",
         "gridColor": "rgba(255,255,255,0.60)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}"
+        "params": "id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}"
     },
     "cpu_max_trend": {
         "html": "chart-box",
@@ -215,7 +215,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.cpu_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&propertyToGather=cpu_used"
+        "params": "title={{i18n.cpu_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&propertyToGather=cpu_used"
     },
     "disk_max_trend": {
         "html": "chart-box",
@@ -240,7 +240,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.disk_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_disk_util_dashboard_sh__ktymsqlitcrv_&propertyToGather=total_space_percentage"
+        "params": "title={{i18n.disk_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_disk_util_dashboard_sh__ktymsqlitcrv_&propertyToGather=total_space_percentage"
     },
     "ram_max_trend": {
         "html": "chart-box",
@@ -265,7 +265,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.ram_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&propertyToGather=ram_in_use"
+        "params": "title={{i18n.ram_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&propertyToGather=ram_in_use"
     },
     "network_max_trend": {
         "html": "chart-box",
@@ -290,7 +290,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "multiplicationFactor=8&title={{i18n.network_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=rx_rate"
+        "params": "multiplicationFactor=8&title={{i18n.network_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=rx_rate"
     }
 }
 ======

@@ -16,7 +16,7 @@ SCHEMA
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.avail_disk_space&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=Disk usage volatility(over 2 hours)"
+        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.avail_disk_space&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=Disk usage volatility(over 2 hours)"
     },
     "ram_usage_growth": {
         "html": "chart-box",
@@ -25,7 +25,7 @@ SCHEMA
         "api": "statusbannerquery_genericGrowthCalc",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
         "type": "metrictext",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.ram_in_use&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=RAM usage volatility(over 2 hours)"
+        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.ram_in_use&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=RAM usage volatility(over 2 hours)"
     },
     "cpu_idle_growth": {
         "html": "chart-box",
@@ -34,7 +34,7 @@ SCHEMA
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=45.000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility&elseTitle=CPU Usage volatility(over 2 hours)"
+        "params": "threshold=45.000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility&elseTitle=CPU Usage volatility(over 2 hours)"
     },
     "db_ram_growth": {
         "html": "chart-box",
@@ -43,7 +43,7 @@ SCHEMA
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility detected&elseTitle=volatility in RAM used by DB (over selected time)"
+        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility detected&elseTitle=volatility in RAM used by DB (over selected time)"
     },
     "db_ram_current": {
         "html": "chart-box",
@@ -52,7 +52,7 @@ SCHEMA
         "api": "statusbannerquery_genericRawData",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=1.5000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=RAM usage is in acceptable range(under 1.5 GB)&elseExplanation=RAM is being overused&elseTitle=Current RAM used by DB(in GB)&add_symbol=GB"
+        "params": "threshold=1.5000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=RAM usage is in acceptable range(under 1.5 GB)&elseExplanation=RAM is being overused&elseTitle=Current RAM used by DB(in GB)&add_symbol=GB"
     },
     "cpu_usage_current": {
         "html": "chart-box",
@@ -61,7 +61,7 @@ SCHEMA
         "api": "statusbannerquery_genericRawData",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=25.0000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=CPU Usage is under threshold (25%)&elseExplanation=CPU is being overused&elseTitle=Current CPU usage, in %."
+        "params": "threshold=25.0000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=CPU Usage is under threshold (25%)&elseExplanation=CPU is being overused&elseTitle=Current CPU usage, in %."
     },
     "cpu_usage": {
         "html": "chart-box",
@@ -81,7 +81,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterCpuUsage}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=cpu_used&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterCpuUsage}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=cpu_used&nodeID={{url.nodeID}}"
     },
     
     "ram_in_use": {
@@ -102,7 +102,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterRAMInUse}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=ram_in_use&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterRAMInUse}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=ram_in_use&nodeID={{url.nodeID}}"
     },
 
     "ram_commit": {
@@ -123,7 +123,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterRAMCommit}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=ram_commit&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterRAMCommit}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=ram_commit&nodeID={{url.nodeID}}"
     },
 
     "net_rx_rate": {
@@ -146,7 +146,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "toKBits=true&title={{i18n.clusterNetRXRate}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=rx_rate&nodeID={{url.nodeID}}"
+        "params": "toKBits=true&title={{i18n.clusterNetRXRate}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=rx_rate&nodeID={{url.nodeID}}"
     },
     "net_tx_rate": {
         "html": "chart-box",
@@ -168,7 +168,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "toKBits=true&title={{i18n.clusterNetTXRate}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=tx_rate&nodeID={{url.nodeID}}"
+        "params": "toKBits=true&title={{i18n.clusterNetTXRate}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=tx_rate&nodeID={{url.nodeID}}"
     },
     "disk_throughput_wps_rate": {
         "html": "chart-box",
@@ -190,7 +190,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterDiskWPSRate}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_disk_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=writePerSec&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterDiskWPSRate}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_disk_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=writePerSec&nodeID={{url.nodeID}}"
     },
     "disk_throughput_rps_rate": {
         "html": "chart-box",
@@ -212,7 +212,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterDiskRPSRate}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_disk_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=readPerSec&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterDiskRPSRate}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_disk_throughput_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=readPerSec&nodeID={{url.nodeID}}"
     },
 
     "table_ram_in_use": {
@@ -233,7 +233,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterTableRAM}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=table_used_ram&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterTableRAM}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=table_used_ram&nodeID={{url.nodeID}}"
     },     
 
     "db_ram_in_use": {
@@ -254,7 +254,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterDBRAM}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=db_used_ram&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterDBRAM}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=db_used_ram&nodeID={{url.nodeID}}"
     },
     "disk_usage": {
         "html": "chart-box",
@@ -274,7 +274,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterDiskUtil}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_disk_util_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=total_space_percentage&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterDiskUtil}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_disk_util_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=total_space_percentage&nodeID={{url.nodeID}}"
     },
     "avail_disk_space_SQL": {
         "html": "chart-box",
@@ -294,7 +294,7 @@ SCHEMA
         "labelColor": "rgba(72,72,72,0.98)",
         "gridColor": "rgba(125,125,125,0.65)",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "title={{i18n.clusterAvailSpaceSQL}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=avail_disk_space&nodeID={{url.nodeID}}"
+        "params": "title={{i18n.clusterAvailSpaceSQL}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}&property=avail_disk_space&nodeID={{url.nodeID}}"
     }
 }
 ======
