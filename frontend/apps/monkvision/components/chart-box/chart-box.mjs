@@ -146,7 +146,7 @@ async function _refreshData(element, force) {
 		const legendFontColor = element.getAttribute("legendFontColor") || "rgba(255, 255, 255,10)";
 		const position = _makeArray(element.getAttribute("legendPosition"));
 		const legendPosition = position ? position[0] : "bottom";
-		const legend = content.contents.legend ? { display: true, position: legendPosition, labels: {fontColor: legendFontColor} } : {display: false};
+		const legend = content.contents.legends ? { display: true, position: legendPosition, labels: {fontColor: legendFontColor} } : {display: false};
 		const animation = threshold ? {
 			duration: 1, onComplete: function () { 
 				let ctx = this.chart.ctx; ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);    
