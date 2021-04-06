@@ -1,0 +1,63 @@
+SCHEMA
+======
+{
+
+    "table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0}},ys1:{{i18n.ys1}},ys2:{{i18n.ys2}},ys3:{{i18n.ys3}},ys4:{{i18n.ys4}},ys5:{{i18n.ys5}},ys6:{{i18n.ys6}},ys7:{{i18n.ys7}},ys8:{{i18n.ys8}},ys9:{{i18n.ys9}},ys10:{{i18n.ys10}},ys11:{{i18n.ys11}},ys12:{{i18n.ys12}},ys13:{{i18n.ys13}}", 
+        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_query_performance_checker_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.sql_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important;color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:last-child{max-width:550px;text-align:justify !important} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "long_running_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_long_running", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_long_run}},ys1:{{i18n.ys1_long_run}},ys2:{{i18n.ys2_long_run}},ys3:{{i18n.ys3_long_run}},ys4:{{i18n.ys4_long_run}},ys5:{{i18n.ys5_long_run}},ys6:{{i18n.ys6_long_run}},ys7:{{i18n.ys7_long_run}},ys8:{{i18n.ys8_long_run}},ys9:{{i18n.ys9_long_run}}", 
+        "params":"id=CurrentSQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_current_queries_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.long_running_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #177100; color: rgb(250,250,250);} tr td:last-child{max-width:460px;text-align:justify !important} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
+    }
+}
+======
+
+
+LAYOUT
+=================
+----------------------
+| long_running_table |
+|--------------------|
+|       table        |
+----------------------
+=================
+Row Heights = 80%,80%
+Col Widths = 100%
+=================
+
+
+CSS CLASSES
+===========
+CONTAINER CLASSES = grid-container-extension
+ITEM CLASSES = grid-item-extension
+PER ITEM CLASS = class
+===========
+
+
+CSS
+=======
+body {margin: 0; height: calc(100vh - 65px);}
+.grid-container-extension {
+    height: 100%;
+}
+.grid-item-extension {
+    box-shadow:  0 0 1px rgba(34, 25, 25, 0.4);
+    border-radius: 10px;
+    margin: 5px;
+    background-color: rgb(30,30,30); 
+    color: rgba(250,250,250,0.95);
+    border: 0.1px solid rgba(250,250,250,0.95);
+}
+
+=======

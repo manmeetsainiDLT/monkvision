@@ -4,9 +4,13 @@
  * (C) 2020 TekMonks. All rights reserved.
  * License: See enclosed license.txt file.
  */
+
 import {chart} from "./lib/chart.mjs";
 import {apimanager as apiman} from "/framework/js/apimanager.mjs";
 import {monkshu_component} from "/framework/js/monkshu_component.mjs";
+//added
+import {i18n} from "/framework/js/i18n.mjs";
+import {session} from "/framework/js/session.mjs";
 
 async function elementRendered(element) {
 	await $$.require(`${APP_CONSTANTS.COMPONENTS_PATH}/chart-box/3p/xregexp-4.3.0-all-min.js`);	// load xregexp which is needed
@@ -16,7 +20,7 @@ async function elementRendered(element) {
 
 function getTimeRange() {
 	if (!chart_box.timeRange) {
-		const dateToday = new Date(), dateWeekAgo = new Date(); dateWeekAgo.setDate(dateToday.getDate() - 7);
+		const dateToday = new Date(), dateWeekAgo = new Date(); dateWeekAgo.setDate(dateToday.getDate() - 2);
 		const dateTimeNow = new Date(dateToday.toString().split('GMT')[0]+' UTC').toISOString().split('.')[0],
 			dateTimeWeekAgo = new Date(dateWeekAgo.toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 
@@ -38,6 +42,7 @@ function _escapeHTML(text) {
 	return p.innerHTML;
 }
 
+
 const _isNullOrUndefined = object => object == null || object == undefined;
 
 async function _refreshData(element, force) {
@@ -58,11 +63,11 @@ async function _refreshData(element, force) {
 		return;
 	} else if (!force && content && JSON.stringify(memory.contents) == JSON.stringify(content.contents)) return;	// return if data didn't change
 	else if (content) memory.contents = clone(content.contents); else delete memory.contents;	// we will now render new data
-
+	
 	const data = createData(); if (content && content.contents) delete content.contents.title;	// title, if it exists, is only for rendering
 
 	const shadowRoot = chart_box.getShadowRootByHostId(id), contentDiv = shadowRoot.querySelector("div#content"); 
-	
+
 	if (type == "text") {
 		contentDiv.innerHTML = "";	// clear it so scrollHeight below is always accurate
 		data.textcontent = content?content.contents||"":"";
@@ -75,7 +80,25 @@ async function _refreshData(element, force) {
 		contentDiv.innerHTML = "";	// clear it 
 		if (!content || !content.contents) return;
 		const metrictext = {}; data.metrictext = metrictext;
+
+		const clusterName=content.contents.clusterName;
+		if(clusterName){
+			const dashboardsRaw = await $$.requireJSON(`${APP_CONSTANTS.APP_PATH}/conf/dashboards.json`);
+			for (const key of Object.keys(dashboardsRaw)) {
+				const dashboardName = dashboardsRaw[key].split(",")[0];
+				if(dashboardName.includes(clusterName)){
+					metrictext.dashboardName=dashboardName;
+					metrictext.clusterName=clusterName;
+					metrictext.refresh = parseInt(dashboardsRaw[key].split(",")[1].split(":")[1]),
+					metrictext.nodelist = JSON.parse(dashboardsRaw[key].split(",")[2].split(":")[1]),
+					metrictext.pageTitle = await i18n.get(`title_${key}`, session.get($$.MONKSHU_CONSTANTS.LANG_ID));
+				}
+			}
+		}
+
+		metrictext.nodeName = content.contents.textexplanation ? (((content.contents.textexplanation).indexOf("-") != -1) ? content.contents.textexplanation.split("-")[0].trim() : null): null;
 		metrictext.textmain = content.contents.textmain; metrictext.textexplanation = content.contents.textexplanation;
+		
 		if (content.contents.icon) metrictext.icon = content.contents.icon;
 		metrictext.styleMetric = `<style>body{background-color: ${content.contents.bgcolor}; color: ${content.contents.fgcolor}; margin: 0px !important;} div#container{padding-top: 10px;}</style>`;
 		await bindData(data, id);
@@ -108,8 +131,8 @@ async function _refreshData(element, force) {
 	clearChart(shadowRoot);	// destroy the old chart if it exists as we will now refresh charts.
 
 	if (type == "bargraph" || type == "linegraph") {
-		await bindData(data, id); if (!content || !content.contents) return;
 
+		await bindData(data, id); if (!content || !content.contents) return;
 		const labels = _getLabels(_makeArray(element.getAttribute("ylabels")));
 		const labelColor = element.getAttribute("labelColor") || "black";
 		const gridColor = element.getAttribute("gridColor") || "darkgrey";
@@ -118,16 +141,18 @@ async function _refreshData(element, force) {
 		const thresholdLineWidth = element.getAttribute("thresholdLineWidth") || 1;
 		const annotation = threshold ? {
 			annotations: [{
-				type: 'line', mode: 'horizontal', scaleID: 'yaxis0', value: threshold, borderColor: thresholdColor, borderWidth: thresholdLineWidth,
-				label: { enabled: false } }] } : false;
-
-		const legendHash = {}, legendParams = element.getAttribute("legend");
-		if(legendParams) for (const legendParam of legendParams.split(",")) {
-			const tuples = legendParam.split(":");
-			legendHash[tuples[0].trim()] = tuples[1].trim();
-		};
-		const legend = content.contents.legends ? { display: true, position: legendHash["position"] || "bottom", labels: {fontColor: legendHash["fontColor"] || "black"} } : {display: false};
-
+				type: 'line', id:"hdline", mode: 'horizontal', scaleID: 'yaxis0', value: threshold, borderColor: thresholdColor, borderWidth: thresholdLineWidth,
+				label: { enabled: true } }] } : false;
+		const legendFontColor = element.getAttribute("legendFontColor") || "rgba(255, 255, 255,10)";
+		const position = _makeArray(element.getAttribute("legendPosition"));
+		const legendPosition = position ? position[0] : "bottom";
+		const legend = content.contents.legend ? { display: true, position: legendPosition, labels: {fontColor: legendFontColor} } : {display: false};
+		const animation = threshold ? {
+			duration: 1, onComplete: function () { 
+				let ctx = this.chart.ctx; ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);    
+				let line = this.chart.annotation.elements.hdline, x = line._model.x2 + 5, y = line._model.y2; 
+				ctx.fillStyle = gridColor; ctx.fillText("threshold",x,y); }} : {animateScale:true}
+		
 		if (type == "bargraph") {
 			const colorHash = _getColorHash(_makeArray(element.getAttribute("ycolors")));
 			const bgColors = [], brColors = []; for (const [i,ys] of content.contents.ys.entries()) {
@@ -142,16 +167,17 @@ async function _refreshData(element, force) {
 				element.getAttribute("xAtZero"), _makeArray(element.getAttribute("yAtZeros")), 
 				_makeArray(element.getAttribute("ysteps")), labels, _makeArray(element.getAttribute("ymaxs")), 
 				bgColors, brColors, labelColor, gridColor, 
-				(element.getAttribute("singleAxis") && element.getAttribute("singleAxis").toLowerCase() == "true"), annotation, legend);
+				(element.getAttribute("singleAxis") && element.getAttribute("singleAxis").toLowerCase() == "true"), annotation, legend, animation);
 		}
 
-		if (type == "linegraph") memory.chart = await chart.drawLinegraph(contentDiv.querySelector("canvas#canvas"), 
+		if (type == "linegraph") {			
+			memory.chart = await chart.drawLinegraph(contentDiv.querySelector("canvas#canvas"), 
 			content.contents, element.getAttribute("maxticks"), _isTrue(element.getAttribute("gridLines")), 
 			element.getAttribute("xAtZero"), _makeArray(element.getAttribute("yAtZeros")), 
 			_makeArray(element.getAttribute("ysteps")), labels, _makeArray(element.getAttribute("ymaxs")), 
 			_makeArray(element.getAttribute("fillColors")),_makeArray(element.getAttribute("borderColors")), 
-			labelColor, gridColor, (element.getAttribute("singleAxis") && element.getAttribute("singleAxis").toLowerCase() == "true"), annotation, legend);
-		
+			labelColor, gridColor, (element.getAttribute("singleAxis") && element.getAttribute("singleAxis").toLowerCase() == "true"), annotation, legend, animation);
+		}
 		return;
 	}
 
@@ -184,6 +210,7 @@ async function _refreshData(element, force) {
 		return;
 	}
 }
+
 
 const _makeArray = string => {
 	if (!string) return null; const raw = string.trim(); if (!raw.startsWith("[")) raw = `[${raw}]`;
@@ -222,6 +249,5 @@ async function _getContent(api, params) {
 }
 
 const _isTrue = string => string?string.toLowerCase() == "true":false;
-
-export const chart_box = {trueWebComponentMode: true, elementRendered, setTimeRange, getTimeRange}
+export const chart_box = {trueWebComponentMode: true, elementRendered, setTimeRange, getTimeRange,_getContent}
 monkshu_component.register("chart-box", `${APP_CONSTANTS.APP_PATH}/components/chart-box/chart-box.html`, chart_box);

@@ -1,37 +1,325 @@
 SCHEMA
 ======
 {
-    "alerts": {"html":"chart-box", "id":"alerts", "title":"{{i18n.CriticalAlerts}}", "api":"alerts", "type":"text",
-        "styleBody":"div#container{height: calc(100vh - 105px) !important;} div#content > div#textcontent > span#text > p:hover {background-color: rgb(80, 80, 80);}"},
-
-    "clientBanner": {"html":"chart-box", "id":"clientBanner", "title": "Issue Summary", 
-        "api":"statusbannerquery", "type":"metrictext", 
-        "params":"id=clientAvailsBanner&percent100Colors=#ffffff,#45d19e&elseColors=#ffffff,#ff3f3fcc&elseIcon=./img/server_icon.svg&percent100Explanation=No issues seen&elseExplanation=There are issues&elseTitle=Success Rate"},
-
-    "clientPie": {"html":"chart-box", "id":"httpPie", "title":"Success vs Failures", "api":"statusaggregatorquery", 
-        "type":"piegraph", "labels":"y1:{{i18n.OK}},y0:{{i18n.Issue}}", "labelsShowPercentage": "true",
-        "colors":"y0:#D43F3F4C:#af3234,y1:#40D59D4C:#0e8f7e", "labelColor":"rgba(250,250,250,0.95)",
-        "styleBody": "div#content{overflow-y: hidden}", "params":"id=clientAvailsPie&$qp_none={{i18n.none}}&info_suffix=_info"},
-
-    "clientBar": {"html":"chart-box", "id":"clientBar", "title":"Overall Status", "api":"loggraphquery", 
-        "type":"bargraph", "maxticks":5, "ysteps":"[10]", "ylabels":"[100:{{i18n.OK}},0:{{i18n.Issue}},else:]", 
-        "ymaxs":"[100]", "ycolors":"[else:#D43F3F4C:#af3234,100:#40D59D4C:#0e8f7e]", "yAtZeros":"[true]", 
-        "gridLines":"true", "labelColor":"rgba(250,250,250,0.95)", "gridColor": "rgba(250,250,250,0.20)",
-        "styleBody": "div#content{overflow-y: hidden}", "params":"id=clientAvails&$qp_timeStep=12000&nullValue={{i18n.none}}&valueTemplate=Value: $$yvalue$$%\nBad Log IDs Follow\n$$value$$"}
+    "monbossAlerts": {
+        "html":"chart-box", 
+        "id":"alerts", 
+        "title":"{{i18n.CriticalAlerts}}", 
+        "api":"monbossAlerts", 
+        "type":"text",
+        "styleBody":"div#container{height: calc(100vh - 50px) !important; font-size: large} div#content{height: calc(60% - 10px) !important;} div#content > div#textcontent > span#text > p {padding:5px;margin:4px;} div#content > div#textcontent > span#text > p:hover {border-radius: 3px; background-color: #fafafa21;}"
+    },
+    "total_active_nodes": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "Total active nodes",
+        "api": "statusbanner_activeNodes",
+        "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
+        "type": "metrictext",
+        "params": "id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_memsql_portcheck_dashboard_sh__ktymsqlitcrv_&percent_total_nodes_Colors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&percent_total_nodes_Explanation=All nodes ONLINE&elseExplanation=One or more nodes OFFLINE&elseTitle=Total Nodes Online"
+    },
+    "max_cpu_node": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE USING MAX CPU IN CLUSTER.",
+        "api": "statusbannerquery_max_data_node",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "type": "metrictext",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_cpu_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much CPU&elseTitle=NODE USING MAX CPU IN CLUSTER"
+    },
+    "max_disk_node": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE USING MAX SPACE IN CLUSTER.",
+        "api": "statusbannerquery_max_data_node",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "type": "metrictext",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much Disk space&elseTitle=NODE USING MAX SPACE IN CLUSTER"
+    },
+    "max_ram_node": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE USING MAX RAM IN CLUSTER.",
+        "api": "statusbannerquery_max_data_node",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node using too much RAM&elseTitle=NODE USING MAX RAM IN CLUSTER"
+    },
+    "max_node_rx": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE USING MAX NETWORK IN CLUSTER-RX Rate",
+        "api": "statusbannerquery_max_data_multiprop_node",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_rx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-RX Rate&add_symbol=Kb/s&toKBits=true"
+    },
+    "max_node_tx": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE USING MAX NETWORK IN CLUSTER-TX Rate",
+        "api": "statusbannerquery_max_data_multiprop_node",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_net_thrpt_node_thresh_tx}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=tx_rate_kb&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most net-throughput&elseTitle=NODE USING MAX NETWORK IN CLUSTER-TX Rate&add_symbol=Kb/s&toKBits=true"
+    },
+    "max_node_wps": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE HAVING MAX DISK Writes/sec IN CLUSTER",
+        "api": "statusbannerquery_max_data_multiprop_node",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_wps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=wr_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Writes/sec IN CLUSTER&add_symbol=wr/s&toKBits=false"
+    },
+    "max_node_rps": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NODE HAVING MAX DISK Reads/sec IN CLUSTER",
+        "api": "statusbannerquery_max_data_multiprop_node",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer{cursor: pointer !important;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 2.6vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "clusterName=ktymsqlitcrv&threshold={{i18n.max_disk_rps}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_disk_throughput_dashboard_sh__ktymsqlitcrv_&propertyToShow=rd_persec&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseExplanation=Node having most Disk-throughput&elseTitle=NODE HAVING MAX DISK Reads/sec IN CLUSTER&add_symbol=rd/s&toKBits=false"
+    },
+    "db_count_node": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "NO. OF DBs IN CLUSTER - Threshold at {{i18n.dbcount_thresh}}.",
+        "api": "statusbannerquery_dbCount",
+        "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 3vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "type": "metrictext",
+        "params": "threshold={{i18n.dbcount_thresh}}&id=JSONMAXDataCalc&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#b30000&elseTitle=Number of databases in cluster - Threshold at {{i18n.dbcount_thresh}}.&add_symbol=DBs"
+    },
+    "cluster_health": {
+        "html": "chart-box",
+        "id": "httpBanner",
+        "title": "CLUSTER HEALTH - HIGHER IS BETTER",
+        "api": "statusbannerquery_clusterHealth",
+        "type": "metrictext",
+        "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: 5vw; margin: 5px; padding: 10px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small; padding: 2px; margin: 2px;}",
+        "params": "max_threshold={{i18n.max_cpu_node_thresh}},{{i18n.max_disk_node_thresh}},{{i18n.max_ram_node_thresh}}&id=JSONMAXDataCalc_Health&$qp_logID_1=shell_mon__bin_bash_c__home_monboss_monboss_scripts_max_ram_node_dashboard_sh__ktymsqlitcrv_&$qp_logID_2=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_max_disk_dashboard_sh__ktymsqlitcrv_&$qp_logID_3=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#0063002a&elseColors=#ffffff,#0063002a&elseTitle=CLUSTER HEALTH - HIGHER IS BETTER"
+    },
+    "table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0}},ys1:{{i18n.ys1}},ys2:{{i18n.ys2}},ys3:{{i18n.ys3}},ys4:{{i18n.ys4}},ys5:{{i18n.ys5}},ys6:{{i18n.ys6}},ys7:{{i18n.ys7}}", 
+        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_query_performance_checker_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.sql_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important;color: rgb(250,250,250);} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:last-child{max-width:500px;} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "long_running_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_long_running", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_long_run}},ys1:{{i18n.ys1_long_run}},ys2:{{i18n.ys2_long_run}},ys3:{{i18n.ys3_long_run}},ys4:{{i18n.ys4_long_run}},ys5:{{i18n.ys5_long_run}},ys6:{{i18n.ys6_long_run}},ys7:{{i18n.ys7_long_run}}", 
+        "params":"id=SQLFilter&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_long_running_query_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.long_running_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:last-child{max-width:500px;} tr:nth-child(odd) {background: #7c808524} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "skew_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_skew", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_skew}},ys1:{{i18n.ys1_skew}},ys2:{{i18n.ys2_skew}},ys3:{{i18n.ys3_skew}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_row_mem_skew_check_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.skew_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr:nth-child(odd) {background: #f7f7f721} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "dbs_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_DBs", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_dbCount}},ys1:{{i18n.ys1_dbCount}},ys2:{{i18n.ys2_dbCount}},ys3:{{i18n.ys3_dbCount}},ys4:{{i18n.ys4_dbCount}},ys5:{{i18n.ys5_dbCount}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_db_quant_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.dbCount_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #00727d; color: rgb(250,250,250);} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "nodeIDs_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_nodes", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_nodes}},ys1:{{i18n.ys1_nodes}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_nodes_list_generator_dashboard_sh__ktymsqlitcrv_&title={{i18n.nodes_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important; color: rgb(250,250,250);} table, td, th{padding: 12px 10px 12px 10px; font-size:small;text-align:center} thead, th{box-shadow: 0px ! important;background-color: #000356; color: rgb(250,250,250);} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "var_table": {
+        "html":"chart-box", 
+        "id":"password", 
+        "api":"sqlPerfTable_vars", 
+        "type":"table", 
+        "labels":"x:{{i18n.skew_serial_no}},ys0:{{i18n.ys0_vars}},ys1:{{i18n.ys1_vars}}", 
+        "params":"id=RawSQLData&$qp_logID=shell_mon__bin_bash_c__home_monboss_monboss_scripts_sql_show_vars_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=true&nullValue={{i18n.none}}&title={{i18n.vars_table}}", 
+        "styleBody":"div#container{font-size:large; height: calc(97% - 10px) !important} div#content{max-height: calc(100vh - 50px) !important;} table, td, th{font-size:small;text-align:left} thead, th{box-shadow: 0px ! important;background-color: #00519e; color: rgb(250,250,250);} tr td:nth-child(1) {max-width:1vw; word-wrap: break-word;} tr td:nth-child(2) {max-width:10vw; word-wrap: break-word;} tr td:nth-child(3) {max-width:15vw; word-wrap: break-word;} tr:nth-child(odd) {background: #7c808520} tr:nth-child(even) {background: #e6f5ff00}"
+    },
+    "success_rate": {
+        "html": "chart-box",
+        "id": "clientBanner",
+        "title": "Will be overridden",
+        "api": "statusbannerquery",
+        "type": "metrictext",
+        "params": "id=ClusterErrRate&percent100Colors=#ffffff,#0063002a&elseColors=#ffffff,#00751f&percent100Explanation=Excessive error rate&elseExplanation=Errors under control&elseTitle=Error rate - gathered from MonBoss"
+    },
+    "clientPie": {
+        "html": "chart-box",
+        "id": "httpPie",
+        "title": "Logs rate - gathered from MonBoss",
+        "api": "statusaggregatorquery",
+        "type": "piegraph",
+        "labels": "y1:{{i18n.OK}},y0:{{i18n.Issue}}",
+        "labelsShowPercentage": "true",
+        "colors": "y0:#D43F3F4C:#af3234,y1:#40D59D4C:#0e8f7e",
+        "labelColor": "rgba(72,72,72,0.98)",
+        "styleBody": "div#content{overflow-y: hidden; height: calc(90% - 10px) !important;}",
+        "params": "id=clientAvailsPie&$qp_none={{i18n.none}}&info_suffix=_info"
+    },
+    "cpu_max_hist": {
+        "html": "chart-box",
+        "id": "httpBar",
+        "title": "Most CPU used by node(historical data)",
+        "api": "loggraphMaxNodes",
+        "type": "bargraph",
+        "maxticks": 3,
+        "ysteps": "[10],[10]",
+        "ymaxs":"[100],[100]",
+        "ylabels": "[],[]",
+        "ycolors": "[0.1:#D43F3F4C:#af3234,else:#40D59D4C:#0e8f7e]",
+        "yAtZeros": "[true],[true]",
+        "gridLines": "true",
+        "labelColor": "rgba(120,120,120)",
+        "gridColor": "rgba(255,255,255,0.60)",
+        "styleBody": "div#content{overflow-y: hidden}",
+        "params": "id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_max_node_dashboard_sh__ktymsqlitcrv_&statusAsBoolean=false&statusFalseValue=0.1&statusTrueValue=1&nullValue={{i18n.none}}"
+    },
+    "cpu_max_trend": {
+        "html": "chart-box",
+        "id": "httpBar",
+        "title": "",
+        "api": "loggraphAllNodesData",
+        "type": "linegraph",
+        "maxticks": 10,
+        "ysteps": "[5]",
+        "ylabels": "[]",
+        "ymaxs": "[]",
+        "singleAxis": true,
+        "yAtZeros": "[true]",
+        "fillColors": "[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00]",
+        "borderColors": "[#52d600],[#ffd11a],[#e600ac],[#66ffff],[#80FC35],[#8B0256],[#9D821F],[#9726F8],[#4C8AC0],[#FAAFAC],[#0F2ADF]",
+        "gridLines": "true",
+        "labelColor": "rgba(120,120,120)",
+        "gridColor": "rgba(210,210,210,0.30)",
+        "threshold": 15,
+        "thresholdColor": "#4251f5",
+        "thresholdLineWidth": 5,
+        "legendFontColor": "rgba(255,255,255,0.80)",
+        "legendPosition": "[bottom]",
+        "styleBody": "div#content{overflow-y: hidden}",
+        "params": "title={{i18n.cpu_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&propertyToGather=cpu_used"
+    },
+    "disk_max_trend": {
+        "html": "chart-box",
+        "id": "httpBar",
+        "title": "",
+        "api": "loggraphAllNodesData",
+        "type": "linegraph",
+        "maxticks": 10,
+        "ysteps": "[5]",
+        "ylabels": "[]",
+        "ymaxs": "[]",
+        "singleAxis": true,
+        "yAtZeros": "[true]",
+        "fillColors": "[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00]",
+        "borderColors": "[#52d600],[#ffd11a],[#e600ac],[#66ffff],[#80FC35],[#8B0256],[#9D821F],[#9726F8],[#4C8AC0],[#FAAFAC],[#0F2ADF]",
+        "gridLines": "true",
+        "labelColor": "rgba(120,120,120)",
+        "gridColor": "rgba(210,210,210,0.30)",
+        "threshold": 15,
+        "thresholdColor": "#4251f5",
+        "thresholdLineWidth": 5,
+        "legendFontColor": "rgba(255,255,255,0.80)",
+        "legendPosition": "[bottom]",
+        "styleBody": "div#content{overflow-y: hidden}",
+        "params": "title={{i18n.disk_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_disk_util_dashboard_sh__ktymsqlitcrv_&propertyToGather=total_space_percentage"
+    },
+    "ram_max_trend": {
+        "html": "chart-box",
+        "id": "httpBar",
+        "title": "",
+        "api": "loggraphAllNodesData",
+        "type": "linegraph",
+        "maxticks": 10,
+        "ysteps": "[5]",
+        "ylabels": "[]",
+        "ymaxs": "[]",
+        "singleAxis": true,
+        "yAtZeros": "[true]",
+        "fillColors": "[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00]",
+        "borderColors": "[#52d600],[#ffd11a],[#e600ac],[#66ffff],[#80FC35],[#8B0256],[#9D821F],[#9726F8],[#4C8AC0],[#FAAFAC],[#0F2ADF]",
+        "gridLines": "true",
+        "labelColor": "rgba(120,120,120)",
+        "gridColor": "rgba(210,210,210,0.30)",
+        "threshold": 45,
+        "thresholdColor": "#4251f5",
+        "thresholdLineWidth": 5,
+        "legendFontColor": "rgba(255,255,255,0.80)",
+        "legendPosition": "[bottom]",
+        "styleBody": "div#content{overflow-y: hidden}",
+        "params": "title={{i18n.ram_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&propertyToGather=ram_in_use"
+    },
+    "network_max_trend": {
+        "html": "chart-box",
+        "id": "httpBar",
+        "title": "",
+        "api": "loggraphAllNodesDataMultiProp",
+        "type": "linegraph",
+        "maxticks": 10,
+        "ysteps": "[50]",
+        "ylabels": "[]",
+        "ymaxs": "[]",
+        "singleAxis": true,
+        "yAtZeros": "[true]",
+        "fillColors": "[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00],[#0052d600],[#0052d600],[#ffff0000],[#66ccff00]",
+        "borderColors": "[#52d600],[#ffd11a],[#e600ac],[#66ffff],[#80FC35],[#8B0256],[#9D821F],[#9726F8],[#4C8AC0],[#FAAFAC],[#0F2ADF]",
+        "gridLines": "true",
+        "labelColor": "rgba(120,120,120)",
+        "gridColor": "rgba(210,210,210,0.30)",
+        "threshold": 45,
+        "thresholdColor": "#4251f5",
+        "thresholdLineWidth": 5,
+        "legendFontColor": "rgba(255,255,255,0.80)",
+        "legendPosition": "[bottom]",
+        "styleBody": "div#content{overflow-y: hidden}",
+        "params": "multiplicationFactor=8&title={{i18n.network_max_trend}}&id=shell_mon__bin_bash_c__home_monboss_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=rx_rate"
+    }
 }
 ======
 
 
 LAYOUT
 =================
---------------------------------------------
-|   alerts    | clientBanner | clientPie   |
-|------------------------------------------|
-|   alerts    |           clientBar        |
---------------------------------------------
+--------------------------------------------------------------------------------------
+| cluster_health                | total_active_nodes | db_count_node  | max_ram_node |
+|------------------------------------------------------------------------------------|
+| cluster_health                | max_cpu_node       | max_disk_node  | max_node_tx  |
+|------------------------------------------------------------------------------------|
+| nodeIDs_table                 | max_node_rps       | max_node_wps   | max_node_rx  |
+|------------------------------------------------------------------------------------|
+|                                      cpu_max_trend                                 |
+|------------------------------------------------------------------------------------|
+|                                      disk_max_trend                                |
+|------------------------------------------------------------------------------------|
+|                                      ram_max_trend                                 |
+|------------------------------------------------------------------------------------|
+|                                  network_max_trend                                 |
+|------------------------------------------------------------------------------------|
+|                                      dbs_table                                     |
+|------------------------------------------------------------------------------------|
+| skew_table                                         | var_table                     |
+--------------------------------------------------------------------------------------
 =================
-Row Heights = 50%,50%
-Col Widths = 30%,35%,35%
+Row Heights = 30%,30%,30%,60%,60%,60%,60%,45%,45%
+Col Widths = 40%,20%,20%,20%
 =================
 
 
@@ -45,7 +333,10 @@ PER ITEM CLASS = class
 
 CSS
 =======
-body {margin: 0;}
+body {margin: 0; height: calc(100vh - 65px);}
+.grid-container-extension {
+    height: 100%;
+}
 .grid-item-extension {
     box-shadow:  0 0 1px rgba(34, 25, 25, 0.4);
     border-radius: 10px;
@@ -54,4 +345,5 @@ body {margin: 0;}
     color: rgba(250,250,250,0.95);
     border: 0.1px solid rgba(250,250,250,0.95);
 }
+
 =======

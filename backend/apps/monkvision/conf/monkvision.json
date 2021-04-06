@@ -1,8 +1,17 @@
 {
-    "db": "c:/Users/Rohit Kapoor/source/monboss/db/monboss.db",
+    "db": "/home/memsql/monboss/db/monboss.db",
     "queries": {
         "clientAvails": "select timestamp as x, round(sum(status)*100/count(status)) as y0, group_concat(case when status=0 then system end) as info0 from logs where timestamp > $from and timestamp < $to group by round(strftime('%s',timestamp)/$timeStep)",
         "clientAvailsBanner": "select cast(sum(status) as float)*100/count(status) as percent from logs where timestamp > $from and timestamp < $to",
-        "clientAvailsPie": "select sum(status) as y1, count(status) - sum(status) as y0, group_concat(case when status=0 then system end) as y0_info, $none as y1_info from logs where timestamp > $from and timestamp < $to"
+        "ClusterErrRate": "select 100-(cast(sum(status) as float)*100/count(status)) as percent from logs where timestamp > $from and timestamp < $to",
+        "clientAvailsPie": "select sum(status) as y1, count(status) - sum(status) as y0, group_concat(case when status=0 then system end) as y0_info, $none as y1_info from logs where timestamp > $from and timestamp < $to ORDER BY datetime(timestamp) DESC",
+        "JSONGrowthCalc": "select json_extract(additional_status, $nodeID) AS data_output from logs where json_valid(additional_status) is true AND logid=$logID ORDER BY timestamp DESC LIMIT 20",
+        "JSONDataCalc": "select json_extract(additional_status, $nodeID) AS raw_data from logs where json_valid(additional_status) is true AND logid=$logID ORDER BY datetime(timestamp) DESC LIMIT 1",
+        "JSONMAXDataCalc": "select additional_status AS raw_data from logs where json_valid(additional_status) is true AND logid=$logID ORDER BY datetime(timestamp) DESC LIMIT 1",
+        "JSONMAXDataCalc_Health": "select additional_status AS raw_data from logs where json_valid(additional_status) is true AND logid IN ($logID_1,$logID_2,$logID_3) ORDER BY datetime(timestamp) DESC LIMIT 3",
+        "CPUDataCalc": "select 100-(json_extract(additional_status, $nodeID)) AS raw_data from logs where json_valid(additional_status) is true AND logid=$logID ORDER BY datetime(timestamp) DESC LIMIT 1",
+        "SQLFilter": "select additional_status AS additional_status, timestamp as timestamp from logs where json_valid(additional_status) is true AND logid=$logID and timestamp > $from order by timestamp desc",
+        "CurrentSQLFilter": "select additional_status AS additional_status, timestamp as timestamp from logs where json_valid(additional_status) is true AND logid=$logID order by timestamp desc limit 1",
+        "RawSQLData": "select additional_status AS additional_status from logs where json_valid(additional_status) is true AND logid=$logID order by timestamp desc limit 1"
     }
 }

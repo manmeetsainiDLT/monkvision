@@ -11,7 +11,7 @@ import {loginmanager} from "./loginmanager.mjs";
 import {session} from "/framework/js/session.mjs";
 import {chart_box} from "../components/chart-box/chart-box.mjs";
 
-const SELECTED_DATES = "__monkvision_selecteddates", DASHBOARD_TIMER = "__monkvision_dashtimer", REFRESH_INTERVAL = "__monkvision_refresh";
+const SELECTED_DATES = "__monkvision_selecteddates", DASHBOARD_TIMER = "__monkvision_dashtimer", REFRESH_INTERVAL = "__monkvision_refresh", SHOW_REFRESH_TIMER = "__monkvision_show_refresh_timer";
 
 const dateAsHTMLDateValue = date => new Date(date.toString().split('GMT')[0]+' UTC').toISOString().split('.')[0];
 
@@ -42,32 +42,49 @@ async function interceptPageLoadData() {
         const dashboardsRaw = await $$.requireJSON(`${APP_CONSTANTS.APP_PATH}/conf/dashboards.json`);
         data.dashboards = [];
         for (const key of Object.keys(dashboardsRaw)) {
-            const file = dashboardsRaw[key].split(",")[0], refresh = parseInt(dashboardsRaw[key].split(",")[1].split(":")[1]),
+            const file = dashboardsRaw[key].split(",")[0], refresh = parseInt(dashboardsRaw[key].split(",")[1].split(":")[1]), nodelist = JSON.parse(dashboardsRaw[key].split(",")[2].split(":")[1]),
                 name = await i18n.get(`name_${key}`, session.get($$.MONKSHU_CONSTANTS.LANG_ID)), title = await i18n.get(`title_${key}`, session.get($$.MONKSHU_CONSTANTS.LANG_ID));
-            data.dashboards.push({ name, file, refresh, title, id: key });
+            data.dashboards.push({ name, file, refresh, title, id: key, nodelist });
         }
 
         // add in dashboard path, and page title to the page data object
         const currentURL = new URL(router.getCurrentURL());
         if (!currentURL.searchParams.get("dash")) { // load first dashboard if none was provided in the incoming URL
             data.title = data.dashboards[0].title;
+            data.name = data.dashboards[0].name;
             data.dash = `./dashboards/${data.dashboards[0].file}`;
             data.refresh = data.dashboards[0].refresh;
+            data.nodelist = data.dashboards[0].nodelist;
+            data.showTimer = showTimerFormat(data.refresh/1000);
             data.pageTitle = `${await i18n.get("title", session.get($$.MONKSHU_CONSTANTS.LANG_ID))} - ${data.dashboards[0].name}`;
         } else {                                                // else get dashboard path and title from the URL
             data.title = currentURL.searchParams.get("title");
             data.dash = currentURL.searchParams.get("dash");
+            data.name = currentURL.searchParams.get("name");
             data.refresh = currentURL.searchParams.get("refresh");
+            data.nodelist = JSON.parse(currentURL.searchParams.get("nodelist"));
+            data.showTimer = showTimerFormat(data.refresh/1000);
             data.pageTitle = `${await i18n.get("title", session.get($$.MONKSHU_CONSTANTS.LANG_ID))} - ${currentURL.searchParams.get("name")}`;
         }
 
         // set the dates data
         if (!session.get(SELECTED_DATES)) {
-            const dateToday = new Date(), dateWeekAgo = new Date(); dateWeekAgo.setDate(dateToday.getDate() - 7);
+            const dateToday = new Date(), dateWeekAgo = new Date(); dateWeekAgo.setDate(dateToday.getDate() - 2);
             data.dateTimeNow = dateAsHTMLDateValue(dateToday); data.dateTimeWeekAgo = dateAsHTMLDateValue(dateWeekAgo);
         } else {
             data.dateTimeNow = session.get(SELECTED_DATES).to;
             data.dateTimeWeekAgo = session.get(SELECTED_DATES).from;
+        }
+        const allDashIcons = document.querySelectorAll("div#leftheader > img.dashicon");
+
+        //To handle selected dashicon
+        let selectedCounter=-1;
+        for (const dashIcon of allDashIcons){
+            selectedCounter++;
+             if (data.dash.endsWith(dashboardsRaw[dashIcon.id].split(",")[0])){
+            data.dashboards[selectedCounter].selected="selected";
+            }
+             else dashIcon.classList.remove("selected");
         }
     }
 
@@ -96,15 +113,28 @@ async function changePassword(_element) {
     });
 }
 
-const _stopRefresh = _ => {if (session.get(DASHBOARD_TIMER)) clearInterval(session.get(DASHBOARD_TIMER));}
+const _stopRefresh = _ => {if (session.get(DASHBOARD_TIMER) || session.get(SHOW_REFRESH_TIMER)) { clearInterval(session.get(DASHBOARD_TIMER)); clearInterval(session.get(SHOW_REFRESH_TIMER));}}
 
 function _startRefresh() {
     _stopRefresh(); if (!session.get(REFRESH_INTERVAL)) return;
-
+    let totalSeconds = (session.get(REFRESH_INTERVAL)/1000) - 1;
+    session.set(SHOW_REFRESH_TIMER, setInterval(_=>{
+        document.getElementById('showtimer').innerText = showTimerFormat(totalSeconds);
+        totalSeconds--; if (totalSeconds == 0) { totalSeconds = session.get(REFRESH_INTERVAL)/1000 }
+    }, 1000));
     session.set(DASHBOARD_TIMER, setInterval(_=>{timeRangeUpdated(false, 
         {from: document.querySelector("input#datetimepickerfrom").value, to: dateAsHTMLDateValue(new Date())});
     }, session.get(REFRESH_INTERVAL)));
-    loginmanager.addLogoutListener(_=>clearInterval(session.get(DASHBOARD_TIMER)));
+    loginmanager.addLogoutListener(_=>{clearInterval(session.get(DASHBOARD_TIMER)); clearInterval(session.get(SHOW_REFRESH_TIMER));});
+}
+
+    // Timer format minutes : seconds
+    function showTimerFormat(totalSeconds) {
+        let minutes = parseInt(totalSeconds / 60, 10);
+        let seconds = parseInt(totalSeconds % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        return(minutes + ":" + seconds);
 }
 
 export const main = {changePassword, interceptPageLoadData, timeRangeUpdated, playPauseCharts};

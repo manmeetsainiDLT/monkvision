@@ -25,9 +25,9 @@ div#maincontent {
 }
 
 div#leftheader {
-	position: absolute;
+	position: fixed;
 	left: 0%;
-	width: 50vw;
+	width: 53px;
 	height: 100vh;
 	box-sizing: border-box;
 	display: flex;
@@ -79,6 +79,20 @@ span#header > span#signoff > img:hover {
 span#header > span#title {
 	text-align: center;
 }
+span#header > span#refreshTimer {
+	width: 50px; font-weight: bold; 
+	background-color: #505050ad; box-shadow: 0 0 1px #50505045; border-radius: 5px;
+	padding: 5px; color: rgba(250,250,250,0.95); text-align: center;
+} 
+
+select{
+	background-color: rgba(220, 220, 220, 0.774);
+}
+select#nodeDropdown{
+	border-radius: 5px;
+	padding: 2px 5px;
+	font-weight: 600;
+}
 
 input#datetimepickerfrom, input#datetimepickerfrom:active, input#datetimepickerto, input#datetimepickerto:active {
 	white-space: normal;	/* this is just to document this css setting here, else it'd be empty */
@@ -89,6 +103,11 @@ span#header > img#playpause:hover {
 	filter: brightness(70%);
 	transition: all 1s ease;
 }
+
+html{
+    	  overflow: scroll;
+	}
+
 </style>
 
 <!doctype html>
@@ -117,16 +136,25 @@ span#header > img#playpause:hover {
 <body>
 <div id="leftheader">
 	{{#dashboards}}
-	<img id="{{id}}" class="dashicon" src="{{{htmlData.dashicon}}}" alt="{{title}}" title="{{title}}" onclick="router.loadPage('./main.html?dash=./dashboards/{{file}}&title={{title}}&refresh={{refresh}}&name={{name}}');"><span>{{name}}</span>
+	<img id="{{id}}" class="dashicon {{selected}}" src="{{{htmlData.dashicon}}}" alt="{{title}}" title="{{title}}" onclick="router.loadPage('./main.html?dash=./dashboards/{{file}}&title={{title}}&refresh={{refresh}}&name={{name}}&nodelist={{nodelist}}');" ><span>{{name}}</span>
 	{{/dashboards}}
 </div>
 <div id="container">
 	<span id="header">
 		<img id="textlogo" src="{{{htmlData.textlogo}}}">
 		<span id="title">{{title}}</span>
+		{{#nodelist}}
+				<label id="clusterLabel">Node:</label>
+				<select selectedNode="{{url.nodeID}}" id="nodeDropdown"></select>
+				<script type="module">
+					import {dropdown} from "./js/dropdown.mjs";
+					dropdown.populateDropdown("{{title}}","{{refresh}}","{{name}}");
+				</script>
+			{{/nodelist}}
 		<input id="datetimepickerfrom" type="datetime-local" value="{{{dateTimeWeekAgo}}}" onchange="main.timeRangeUpdated(true)">
 		<input id="datetimepickerto" type="datetime-local" value="{{{dateTimeNow}}}" onchange="main.timeRangeUpdated(true)">
 		<img id="playpause" src="./img/pause.svg" onclick="main.playPauseCharts(this)">
+		<span id="showtimer">{{showTimer}}</span>
 		<span-with-menu id="gear" {{{htmlData.span-with-menu#gear}}}><img src="./img/settings.svg" {{{htmlData.span-with-menu#gear>img}}}>
 			<menu-item onclick="main.changePassword(this)">{{i18n.ChangePassword}}</menu-item>
 		</span-with-menu>
