@@ -44,7 +44,7 @@
              final_data["common_name"]=currentData.common_name;
          }
      }
-     const truePercent = Math.fround(final_data["max_data"]).toFixed(2);
+     let truePercent = Math.fround(final_data["max_data"]).toFixed(2);
      // calculate issue percentage
      const threshold = jsonReq["threshold"] || 5.0000;
  
