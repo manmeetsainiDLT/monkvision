@@ -26,7 +26,7 @@ exports.doService = async jsonReq => {
         LOG.error("DB read issue");
         return CONSTANTS.FALSE_RESULT;
     }
-    const dataDescription = jsonReq.dataDescription;
+    const dataDescription = jsonReq.dataDescription || "";
     
     // Calculation
     // Standard deviation
@@ -90,16 +90,16 @@ exports.doService = async jsonReq => {
     }
     if (dataDescription == "network")
     {
-        if(truePercent > 1048576){
-            add_symbol="GB/s"
-            truePercent=parseFloat(truePercent/1048576);
+        if(parseFloat(truePercent) > 1048576){
+            add_symbol = "GB/s"
+            truePercent=truePercent/1048576;
         }
-        else if (truePercent > 1024){
-            add_symbol="MB/s"
-            truePercent=parseFloat(truePercent/1024);    
+        else if (parseFloat(truePercent) > 1024){
+            add_symbol = "MB/s"
+            truePercent=truePercent/1024;    
         }
         else {
-            add_symbol="KB/s"
+            add_symbol = "KB/s"
         }
     }
     const result = {
