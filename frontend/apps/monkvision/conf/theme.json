@@ -142,15 +142,15 @@
             "ram_max_trend": "RAM USAGE ACROSS CLUSTER, in %",
             "network_max_trend": "NETWORK USAGE ACROSS CLUSTER, in %",
 
-            "max_cpu_node_thresh": "60.00",
-            "max_disk_node_thresh": "65.00",
-            "max_ram_node_thresh": "60.00",
-            "max_net_thrpt_node_thresh_rx": "1000.00",
-            "max_net_thrpt_node_thresh_tx": "1000.00",
-            "max_disk_rps": "120.00",
-            "max_disk_wps": "30.00",
+            "max_cpu_node_thresh": "75.00",
+            "max_disk_node_thresh": "80.00",
+            "max_ram_node_thresh": "90.00",
+            "max_net_thrpt_node_thresh_rx": "500000.00",
+            "max_net_thrpt_node_thresh_tx": "500000.00",
+            "max_disk_rps": "50000.00",
+            "max_disk_wps": "50000.00",
 
-            "dbcount_thresh": 6,
+            "dbcount_thresh": 50,
             
             "clusterRAMInUse": "RAM in use (in %)",
             "clusterRAMCommit": "RAM commit (in %)",
