@@ -88,7 +88,7 @@ exports.doService = async jsonReq => {
     if (jsonReq.add_symbol) {
         add_symbol = jsonReq.add_symbol;
     }
-    if (dataDescription.includes("network"))
+    if (dataDescription == "network")
     {
         if(truePercent > 1048576){
             add_symbol="GB/s"
