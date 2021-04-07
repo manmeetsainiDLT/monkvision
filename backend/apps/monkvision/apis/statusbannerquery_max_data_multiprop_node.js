@@ -26,7 +26,7 @@ exports.doService = async jsonReq => {
         LOG.error("DB read issue");
         return CONSTANTS.FALSE_RESULT;
     }
-    const KBMultiplier = jsonReq.toKBits ? 8 : 1;
+    const dataDescription = jsonReq.dataDescription;
     
     // Calculation
     // Standard deviation
@@ -84,11 +84,23 @@ exports.doService = async jsonReq => {
     if (parseFloat(threshold) > parseFloat(truePercent)) textexplanation = `${final_data.common_name} - ${final_data.node_hostname}:${final_data.node_port}, device - ${final_data.max_data_source_device}, Threshold at: ${threshold}`;
     else textexplanation = `${final_data.common_name} - ${final_data.node_hostname}:${final_data.node_port}, device - ${final_data.max_data_source_device}, Threshold at: ${threshold}`;
 
-    let add_symbol;
-    if (!jsonReq.add_symbol) {
-        add_symbol = "%"
-    } else {
-        add_symbol = jsonReq.add_symbol
+    let add_symbol = "%";
+    if (jsonReq.add_symbol) {
+        add_symbol = jsonReq.add_symbol;
+    }
+    if (dataDescription.includes("network"))
+    {
+        if(truePercent > 1048576){
+            add_symbol="GB/s"
+            truePercent=parseFloat(truePercent/1048576);
+        }
+        else if (truePercent > 1024){
+            add_symbol="MB/s"
+            truePercent=parseFloat(truePercent/1024);    
+        }
+        else {
+            add_symbol="KB/s"
+        }
     }
     const result = {
         result: true,
