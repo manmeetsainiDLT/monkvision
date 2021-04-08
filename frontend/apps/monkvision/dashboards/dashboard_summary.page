@@ -284,7 +284,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "multiplicationFactor=8&title={{i18n.network_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=rx_rate"
+        "params": "multiplicationFactor=8&title={{i18n.network_max_tx_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=rx_rate"
     },
     "network_max_tx_trend": {
         "html": "chart-box",
@@ -306,7 +306,7 @@ SCHEMA
         "legendFontColor": "rgba(255,255,255,0.80)",
         "legendPosition": "[bottom]",
         "styleBody": "div#content{overflow-y: hidden}",
-        "params": "multiplicationFactor=8&title={{i18n.network_max_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=tx_rate"
+        "params": "multiplicationFactor=8&title={{i18n.network_max_rx_trend}}&id=shell_mon__bin_bash_c__home_memsql_monboss_scripts_network_throughput_dashboard_sh__ktymsqlitcrv_&propertyToGather=tx_rate"
     }
 }
 ======

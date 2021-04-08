@@ -140,7 +140,8 @@
             "cpu_max_trend": "CPU USAGE ACROSS CLUSTER, in %",
             "disk_max_trend": "DISK USAGE ACROSS CLUSTER, in %",
             "ram_max_trend": "RAM USAGE ACROSS CLUSTER, in %",
-            "network_max_trend": "NETWORK USAGE ACROSS CLUSTER, in %",
+            "network_max_tx_trend": "NETWORK OUTBOUND(Tx) ACROSS CLUSTER, in KB/sec",
+            "network_max_rx_trend": "NETWORK INBOUND(Rx) ACROSS CLUSTER, in KB/sec",
 
             "max_cpu_node_thresh": "75.00",
             "max_disk_node_thresh": "80.00",
