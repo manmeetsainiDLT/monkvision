@@ -126,7 +126,7 @@
             "table":"Sql Performance Table",
 
             "sql_table":"SQL QUERIES PERFORMANCE - TABLE",
-            "long_running_table":"CURRENTLY EXECUTING AND LONGEST TIME TAKING QUERIES - UPDATED EVERY 5 mins",
+            "long_running_table":"TOP 10 COSTLIEST QUERIES",
             "skew_table":"ROW AND MEMORY SKEW - TABLE",
             "dbCount_table":"DB INFORMATION - TABLE",
             "vars_table":"DB VARIABLES - TABLE",
