@@ -16,34 +16,34 @@ SCHEMA
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.avail_disk_space&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=Disk usage volatility(over 2 hours)"
+        "params": "threshold=80.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.avail_disk_space&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=Disk usage volatility"
     },
     "ram_usage_growth": {
         "html": "chart-box",
         "id": "httpBanner",
-        "title": "RAM Usage volatility(over 2 hours).",
+        "title": "RAM Usage volatility.",
         "api": "statusbannerquery_genericGrowthCalc",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
         "type": "metrictext",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.ram_in_use&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=RAM usage volatility(over 2 hours)"
+        "params": "threshold=80.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.ram_in_use&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_pagefault_ramcommit_swapusedstat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility rate&elseTitle=RAM usage volatility"
     },
     "cpu_idle_growth": {
         "html": "chart-box",
         "id": "httpBanner",
-        "title": "CPU Usage volatility(over 2 hours).",
+        "title": "CPU Usage volatility.",
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=45.000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility&elseTitle=CPU Usage volatility(over 2 hours)"
+        "params": "threshold=90.000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility&elseTitle=CPU Usage volatility"
     },
     "db_ram_growth": {
         "html": "chart-box",
         "id": "httpBanner",
-        "title": "DB RAM volatility(over 2 hours).",
+        "title": "DB RAM volatility.",
         "api": "statusbannerquery_genericGrowthCalc",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=30.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility detected&elseTitle=volatility in RAM used by DB (over selected time)"
+        "params": "threshold=60.0000&id=JSONGrowthCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=Minimal volatility&elseExplanation=High volatility detected&elseTitle=volatility in RAM used by DB (over selected time)"
     },
     "db_ram_current": {
         "html": "chart-box",
@@ -52,7 +52,7 @@ SCHEMA
         "api": "statusbannerquery_genericRawData",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=1.5000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=RAM usage is in acceptable range(under 1.5 GB)&elseExplanation=RAM is being overused&elseTitle=Current RAM used by DB(in GB)&add_symbol=GB"
+        "params": "threshold=200.5000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.db_used_ram&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_sql_nodes_performance_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=RAM usage is in acceptable range&elseExplanation=RAM is being overused&elseTitle=Current RAM used by DB(in GB)&add_symbol=GB"
     },
     "cpu_usage_current": {
         "html": "chart-box",
@@ -61,7 +61,7 @@ SCHEMA
         "api": "statusbannerquery_genericRawData",
         "type": "metrictext",
         "styleBody": "div#content > div#metrictextcontainer > div#metrictext > span#metrictextmain {font-size: -webkit-xxx-large; padding: 15px;} div#content > div#metrictextcontainer > div#metrictext > span#metrictextexplanation {font-size: small;}",
-        "params": "threshold=25.0000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=CPU Usage is under threshold (25%)&elseExplanation=CPU is being overused&elseTitle=Current CPU usage, in %."
+        "params": "threshold=85.0000&id=JSONDataCalc&$qp_nodeID=$.{{url.nodeID}}.cpu_used&$qp_logID=shell_mon__bin_bash_c__home_memsql_monboss_scripts_cpu_stat_dashboard_sh__ktymsqlitcrv_&raw_data=true&percentthresholdColors=#ffffff,#006300&elseColors=#ffffff,#cc2900&&percentthresholdExplanation=CPU Usage is under threshold (85%)&elseExplanation=CPU is being overused&elseTitle=Current CPU usage, in %."
     },
     "cpu_usage": {
         "html": "chart-box",
