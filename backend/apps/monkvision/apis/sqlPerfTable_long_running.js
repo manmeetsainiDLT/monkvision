@@ -57,16 +57,16 @@ exports.doService = async jsonReq => {
             data_array = JSON.parse(row.additional_status);
         } catch (e) {}
         for (let index = 0; index < data_array.length; index++) {
-            let Query_database = data_array[index].Query_database;
-            let Query_user = data_array[index].Query_user;
-            let Query_node_hostname = data_array[index].Query_node_hostname;
-            let Query_node_port = data_array[index].Query_node_port;
-            let Query_process_id = data_array[index].Query_process_id;
-            let Query_elapsedTime = data_array[index].Query_elapsedTime;
-            let Query_state = data_array[index].Query_state;
-            let Query_text = data_array[index].Query_text;
-            let Query_submit_time = data_array[index].Query_submit_time;
-            let Query_cluster = data_array[index].Query_cluster;
+            let Query_database = data_array[index].Query_database || "null";
+            let Query_user = data_array[index].Query_user || "null";
+            let Query_node_hostname = data_array[index].Query_node_hostname || "null";
+            let Query_node_port = data_array[index].Query_node_port || "null";
+            let Query_process_id = data_array[index].Query_process_id || "null";
+            let Query_elapsedTime = data_array[index].Query_elapsedTime || "null";
+            let Query_state = data_array[index].Query_state || "null";
+            let Query_text = data_array[index].Query_text || "null";
+            let Query_submit_time = data_array[index].Query_submit_time || "null";
+            let Query_cluster = data_array[index].Query_cluster || "null";
             
             y1.unshift(Query_database);
             y2.unshift(Query_user);
