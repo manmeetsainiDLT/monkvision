@@ -265,7 +265,7 @@ SCHEMA
         "api": "loggraphAllNodesDataMultiProp",
         "type": "linegraph",
         "maxticks": 10,
-        "ysteps": "[700000]",
+        "ysteps": "[1000000]",
         "ylabels": "[]",
         "ymaxs": "[]",
         "singleAxis": true,
@@ -287,7 +287,7 @@ SCHEMA
         "api": "loggraphAllNodesDataMultiProp",
         "type": "linegraph",
         "maxticks": 10,
-        "ysteps": "[700000]",
+        "ysteps": "[1000000]",
         "ylabels": "[]",
         "ymaxs": "[]",
         "singleAxis": true,
@@ -330,7 +330,7 @@ LAYOUT
 | skew_table                                         | var_table                     |
 --------------------------------------------------------------------------------------
 =================
-Row Heights = 30%,30%,30%,60%,60%,60%,60%,60%,45%,45%
+Row Heights = 30%,30%,30%,70%,70%,70%,70%,70%,45%,45%
 Col Widths = 40%,20%,20%,20%
 =================
 
